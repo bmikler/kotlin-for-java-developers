@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rationals.TestRationals" tests="43" skipped="0" failures="1" errors="0" timestamp="2023-10-27T11:31:41" hostname="DMK378-Z15G8" time="0.054">
+  <properties/>
+  <testcase name="test0Sample9InRange" classname="rationals.TestRationals" time="0.006"/>
+  <testcase name="test0Sample3Product" classname="rationals.TestRationals" time="0.001"/>
+  <testcase name="test4InRange0" classname="rationals.TestRationals" time="0.009"/>
+  <testcase name="test4InRange1" classname="rationals.TestRationals" time="0.001"/>
+  <testcase name="test4InRange2" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test4InRange3" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test4InRange4" classname="rationals.TestRationals" time="0.001"/>
+  <testcase name="test4InRange5" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test4InRange6" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test0Sample10Long" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test3Comparison10" classname="rationals.TestRationals" time="0.002"/>
+  <testcase name="test0Sample1Sum" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test0Sample5Negation" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test0Sample4Quotient" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test1Normalized0" classname="rationals.TestRationals" time="0.001"/>
+  <testcase name="test1Normalized1" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test1Normalized2" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test1Normalized3" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test1Normalized4" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test1Normalized5" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test3Comparison0" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test3Comparison1" classname="rationals.TestRationals" time="0.009">
+    <failure message="java.lang.IndexOutOfBoundsException: Index: 1, Size: 1" type="java.lang.IndexOutOfBoundsException">java.lang.IndexOutOfBoundsException: Index: 1, Size: 1
+	at java.base/java.util.Collections$SingletonList.get(Collections.java:4849)
+	at rationals.RationalKt.toRational(Rational.kt:96)
+	at rationals.TestRationals.testComparison(TestRationals.kt:30)
+	at rationals.TestRationals.test3Comparison1(TestRationals.kt:165)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</failure>
+  </testcase>
+  <testcase name="test3Comparison2" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test3Comparison3" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test3Comparison4" classname="rationals.TestRationals" time="0.001"/>
+  <testcase name="test3Comparison5" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test3Comparison6" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test3Comparison7" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test3Comparison8" classname="rationals.TestRationals" time="0.001"/>
+  <testcase name="test3Comparison9" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test0Sample8Comparison" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test0Sample11BigInteger" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test0Sample2Difference" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test0Sample6Integer" classname="rationals.TestRationals" time="0.0"/>
+  <testcase name="test2Arithmetic0" classname="rationals.TestRationals" time="0.006"/>
+  <testcase name="test2Arithmetic1" classname="rationals.TestRationals" time="0.002"/>
+  <testcase name="test2Arithmetic2" classname="rationals.TestRationals" time="0.002"/>
+  <testcase name="test2Arithmetic3" classname="rationals.TestRationals" time="0.002"/>
+  <testcase name="test2Arithmetic4" classname="rationals.TestRationals" time="0.002"/>
+  <testcase name="test2Arithmetic5" classname="rationals.TestRationals" time="0.002"/>
+  <testcase name="test2Arithmetic6" classname="rationals.TestRationals" time="0.001"/>
+  <testcase name="test2Arithmetic7" classname="rationals.TestRationals" time="0.001"/>
+  <testcase name="test0Sample7NormalizedForm" classname="rationals.TestRationals" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
