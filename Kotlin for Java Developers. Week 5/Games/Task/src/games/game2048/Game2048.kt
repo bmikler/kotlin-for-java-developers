@@ -5,6 +5,7 @@ import board.Direction
 import board.GameBoard
 import board.createGameBoard
 import games.game.Game
+import java.lang.RuntimeException
 
 /*
  * Your task is to implement the game 2048 https://en.wikipedia.org/wiki/2048_(video_game).
@@ -13,7 +14,7 @@ import games.game.Game
  * After implementing it you can try to play the game running 'PlayGame2048'.
  */
 fun newGame2048(initializer: Game2048Initializer<Int> = RandomGame2048Initializer): Game =
-        Game2048(initializer)
+    Game2048(initializer)
 
 class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
     private val board = createGameBoard<Int?>(4)
@@ -41,7 +42,10 @@ class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
  * Add a new value produced by 'initializer' to a specified cell in a board.
  */
 fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
-    TODO()
+    val nextValue = initializer.nextValue(this)
+    if (nextValue != null) {
+        this[nextValue.first] = nextValue.second
+    }
 }
 
 /*
@@ -53,7 +57,12 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
-    TODO()
+    rowOrColumn.moveAndMergeEqual { cell ->
+        this[cell] = get(cell)?.times(2)
+        cell
+    }
+
+    return true
 }
 
 /*
@@ -64,5 +73,5 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
-    TODO()
+    throw RuntimeException()
 }
