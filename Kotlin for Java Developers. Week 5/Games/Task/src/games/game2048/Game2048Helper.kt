@@ -27,7 +27,7 @@ fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
 
     while (i < mutable.size) {
         if (mutable[i] == mutable.getOrNull(i + 1)) {
-            result.add(merge(mutable[i + 1]))
+            result.add(merge(mutable[i]))
             i += 2
         } else {
             result.add(mutable[i])
