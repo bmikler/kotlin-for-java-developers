@@ -57,10 +57,18 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
-    System.err.println("cells to merge")
-    rowOrColumn.moveAndMergeEqual { cell ->
-        this[cell] = get(cell)?.times(2)
-        cell
+    val cellValues = rowOrColumn.map { get(it) }
+
+    val mergedValues = cellValues.moveAndMergeEqual { value ->
+        value.times(2)
+    }
+
+    if (mergedValues == cellValues) {
+        return false
+    }
+
+    for ((index, cell) in rowOrColumn.withIndex()) {
+        this[cell] = mergedValues.getOrNull(index)
     }
 
     return true

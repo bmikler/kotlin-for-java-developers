@@ -34,10 +34,10 @@ open class SquareBoardImpl(final override val width: Int) : SquareBoard {
 
 class GameBoardImpl<T>(width: Int) : SquareBoardImpl(width), GameBoard<T> {
 
-    private val map: MutableMap<Cell, T?> = mutableMapOf()
+    override val map: MutableMap<Cell, T?> = mutableMapOf()
 
     init {
-        getAllCells().forEach{ cell -> map[cell] = null }
+        getAllCells().forEach { cell -> map[cell] = null }
     }
 
     override fun get(cell: Cell): T? = map[cell]
@@ -47,13 +47,13 @@ class GameBoardImpl<T>(width: Int) : SquareBoardImpl(width), GameBoard<T> {
 
     override fun any(predicate: (T?) -> Boolean): Boolean = getAllCells().any { cell -> predicate(get(cell)) }
 
-    override fun find(predicate: (T?) -> Boolean): Cell? = map.filter { predicate(it.value) }.map { it.key }.firstOrNull()
+    override fun find(predicate: (T?) -> Boolean): Cell? =
+        map.filter { predicate(it.value) }.map { it.key }.firstOrNull()
 
-    override fun filter(predicate: (T?) -> Boolean): Collection<Cell> = map.filter { predicate(it.value) }.map { it.key }.toList()
+    override fun filter(predicate: (T?) -> Boolean): Collection<Cell> =
+        map.filter { predicate(it.value) }.map { it.key }.toList()
 
     override fun set(cell: Cell, value: T?) {
-        if (value != null) {
-            map[cell] = value
-        }
+        map[cell] = value
     }
 }
