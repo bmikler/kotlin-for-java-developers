@@ -57,6 +57,7 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
+    System.err.println("cells to merge")
     rowOrColumn.moveAndMergeEqual { cell ->
         this[cell] = get(cell)?.times(2)
         cell
@@ -73,5 +74,51 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
-    throw RuntimeException()
+
+    var result = false
+
+    when (direction) {
+        Direction.UP -> {
+            for (i in 0..width) {
+                val moveResult = moveValuesInRowOrColumn(getColumn(width downTo 0, i))
+                if (moveResult) {
+                    result = moveResult
+                }
+            }
+        }
+
+        Direction.DOWN -> {
+            for (i in 0..width) {
+                val moveResult = moveValuesInRowOrColumn(getColumn(0..width, i))
+                if (moveResult) {
+                    result = moveResult
+                }
+            }
+
+        }
+        Direction.LEFT -> {
+            for (i in 0..width) {
+                val moveResult = moveValuesInRowOrColumn(getRow(i, width downTo 0))
+                if (moveResult) {
+                    result = moveResult
+                }
+            }
+
+        }
+        Direction.RIGHT -> {
+            for (i in 1..width) {
+                val rowOrColumn = getRow(i, 1..width)
+                System.err.println("row or Column: $rowOrColumn")
+                val moveResult = moveValuesInRowOrColumn(rowOrColumn)
+                if (moveResult) {
+                    result = moveResult
+                }
+            }
+
+        }
+    }
+
+
+
+    return result
 }
