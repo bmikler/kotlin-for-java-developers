@@ -59,19 +59,17 @@ fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
 fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
     val cellValues = rowOrColumn.map { get(it) }
 
-    val mergedValues = cellValues.moveAndMergeEqual { value ->
-        value.times(2)
+    val mergedValues = cellValues.moveAndMergeEqual { value -> value.times(2) }
+
+    val isMoved = mergedValues != cellValues && mergedValues.isNotEmpty()
+
+    if (isMoved) {
+        for ((index, cell) in rowOrColumn.withIndex()) {
+            this[cell] = mergedValues.getOrNull(index)
+        }
     }
 
-    if (mergedValues == cellValues || mergedValues.isEmpty()) {
-        return false
-    }
-
-    for ((index, cell) in rowOrColumn.withIndex()) {
-        this[cell] = mergedValues.getOrNull(index)
-    }
-
-    return true
+    return isMoved
 }
 
 /*
@@ -83,11 +81,18 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
     return when (direction) {
-        Direction.UP -> (1..width).map { moveValuesInRowOrColumn(getColumn(1..width, it)) }.any { it }
-        Direction.DOWN -> (1..width).map { moveValuesInRowOrColumn(getColumn(width downTo 1, it)) }.any { it }
-        Direction.LEFT -> (1..width).map { moveValuesInRowOrColumn(getRow(it, 1..width)) }.any { it }
-        Direction.RIGHT -> (1..width).map { moveValuesInRowOrColumn(getRow(it, width downTo 1)) }.any { it }
-
+        Direction.UP -> (1..width)
+            .map { moveValuesInRowOrColumn(getColumn(1..width, it)) }
+            .any { result -> result == true  }
+        Direction.DOWN -> (1..width)
+            .map { moveValuesInRowOrColumn(getColumn(width downTo 1, it)) }
+            .any { result -> result == true  }
+        Direction.LEFT -> (1..width)
+            .map { moveValuesInRowOrColumn(getRow(it, 1..width)) }
+            .any { result -> result == true }
+        Direction.RIGHT -> (1..width)
+            .map { moveValuesInRowOrColumn(getRow(it, width downTo 1)) }
+            .any { result -> result == true  }
     }
 }
 

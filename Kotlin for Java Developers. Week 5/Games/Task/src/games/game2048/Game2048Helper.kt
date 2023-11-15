@@ -18,7 +18,6 @@ package games.game2048
  * You can find more examples in 'TestGame2048Helper'.
 */
 fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
-
     val mutable = this.filterNotNull()
 
     val result = mutableListOf<T>()
@@ -36,6 +35,5 @@ fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
     }
 
     return result
-
 }
 
