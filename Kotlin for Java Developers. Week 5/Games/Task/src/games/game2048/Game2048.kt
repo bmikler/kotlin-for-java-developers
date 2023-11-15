@@ -82,50 +82,13 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
  * Return 'true' if the values were moved and 'false' otherwise.
  */
 fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
+    return when (direction) {
+        Direction.UP -> (1..width).map { moveValuesInRowOrColumn(getColumn(1..width, it)) }.any { it }
+        Direction.DOWN -> (1..width).map { moveValuesInRowOrColumn(getColumn(width downTo 1, it)) }.any { it }
+        Direction.LEFT -> (1..width).map { moveValuesInRowOrColumn(getRow(it, 1..width)) }.any { it }
+        Direction.RIGHT -> (1..width).map { moveValuesInRowOrColumn(getRow(it, width downTo 1)) }.any { it }
 
-    var result = false
-
-    when (direction) {
-        Direction.UP -> {
-            for (i in 0..width) {
-                val moveResult = moveValuesInRowOrColumn(getColumn(1 .. width, i))
-                if (moveResult) {
-                    result = moveResult
-                }
-            }
-        }
-
-        Direction.DOWN -> {
-            for (i in 0..width) {
-                val moveResult = moveValuesInRowOrColumn(getColumn(width downTo 1, i))
-                if (moveResult) {
-                    result = moveResult
-                }
-            }
-
-        }
-        Direction.LEFT -> {
-            for (i in 0..width) {
-                val moveResult = moveValuesInRowOrColumn(getRow(i, 1 .. width))
-                if (moveResult) {
-                    result = moveResult
-                }
-            }
-
-        }
-        Direction.RIGHT -> {
-            for (i in 1..width) {
-                val rowOrColumn = getRow(i, width downTo 1)
-                val moveResult = moveValuesInRowOrColumn(rowOrColumn)
-                if (moveResult) {
-                    result = moveResult
-                }
-            }
-
-        }
     }
-
-
-
-    return result
 }
+
+
