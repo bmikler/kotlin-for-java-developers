@@ -1612,4 +1612,8 @@ files:
   learner_created: false
 feedback_link: https://www.coursera.org/learn/kotlin-for-java-developers/programming/NSid0/game-2048-game-of-fifteen/discussions
 status: Unchecked
+feedback:
+  message: "Submission successful, please <a href=\"https://www.coursera.org/learn/kotlin-for-java-developers/programming/NSid0/game-2048-game-of-fifteen/submission\"\
+    >check the status on Coursera</a>"
+  time: "Wed, 15 Nov 2023 14:05:14 UTC"
 record: -1

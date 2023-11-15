@@ -25,7 +25,7 @@ class GameOfFifteen(private val initializer: GameOfFifteenInitializer, width: In
     }
 
     override fun hasWon(): Boolean {
-        return board.getAllCells().map { board[it] }.containsAll((1..15).toList())
+        return board.getAllCells().mapNotNull { board[it] } == (1..15).toList()
     }
 
     override fun processMove(direction: Direction) {
