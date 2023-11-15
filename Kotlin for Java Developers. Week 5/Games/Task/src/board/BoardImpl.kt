@@ -34,7 +34,7 @@ open class SquareBoardImpl(final override val width: Int) : SquareBoard {
 
 class GameBoardImpl<T>(width: Int) : SquareBoardImpl(width), GameBoard<T> {
 
-    override val map: MutableMap<Cell, T?> = mutableMapOf()
+    private val map: MutableMap<Cell, T?> = mutableMapOf()
 
     init {
         getAllCells().forEach { cell -> map[cell] = null }

@@ -25,13 +25,11 @@ interface SquareBoard {
 
     fun getRow(i: Int, jRange: IntProgression): List<Cell>
     fun getColumn(iRange: IntProgression, j: Int): List<Cell>
-
     fun Cell.getNeighbour(direction: Direction): Cell?
 
 }
 
 interface GameBoard<T> : SquareBoard {
-    val map: MutableMap<Cell, T?>
     operator fun get(cell: Cell): T?
     operator fun set(cell: Cell, value: T?)
 
