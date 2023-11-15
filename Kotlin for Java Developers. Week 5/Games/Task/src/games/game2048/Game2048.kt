@@ -63,7 +63,7 @@ fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
         value.times(2)
     }
 
-    if (mergedValues == cellValues) {
+    if (mergedValues == cellValues || mergedValues.isEmpty()) {
         return false
     }
 
@@ -88,7 +88,7 @@ fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
     when (direction) {
         Direction.UP -> {
             for (i in 0..width) {
-                val moveResult = moveValuesInRowOrColumn(getColumn(width downTo 0, i))
+                val moveResult = moveValuesInRowOrColumn(getColumn(1 .. width, i))
                 if (moveResult) {
                     result = moveResult
                 }
@@ -97,7 +97,7 @@ fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
 
         Direction.DOWN -> {
             for (i in 0..width) {
-                val moveResult = moveValuesInRowOrColumn(getColumn(0..width, i))
+                val moveResult = moveValuesInRowOrColumn(getColumn(width downTo 1, i))
                 if (moveResult) {
                     result = moveResult
                 }
@@ -106,7 +106,7 @@ fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
         }
         Direction.LEFT -> {
             for (i in 0..width) {
-                val moveResult = moveValuesInRowOrColumn(getRow(i, width downTo 0))
+                val moveResult = moveValuesInRowOrColumn(getRow(i, 1 .. width))
                 if (moveResult) {
                     result = moveResult
                 }
@@ -115,8 +115,7 @@ fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
         }
         Direction.RIGHT -> {
             for (i in 1..width) {
-                val rowOrColumn = getRow(i, 1..width)
-                System.err.println("row or Column: $rowOrColumn")
+                val rowOrColumn = getRow(i, width downTo 1)
                 val moveResult = moveValuesInRowOrColumn(rowOrColumn)
                 if (moveResult) {
                     result = moveResult
