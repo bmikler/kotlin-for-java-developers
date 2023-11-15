@@ -1,5 +1,8 @@
 package games.gameOfFifteen
 
+import kotlin.math.max
+import kotlin.math.min
+
 /*
  * This function should return the parity of the permutation.
  * true - the permutation is even
@@ -10,6 +13,6 @@ package games.gameOfFifteen
  *   (numbers sorted in the right order, empty cell at last).
  * Thus the initial permutation should be correct.
  */
-fun isEven(permutation: List<Int>): Boolean {
-    TODO()
-}
+fun isEven(permutation: List<Int>): Boolean = permutation
+    .mapIndexed { index, item -> permutation.subList(index + 1, permutation.size).count { it < item } }
+    .sum() % 2 == 0
